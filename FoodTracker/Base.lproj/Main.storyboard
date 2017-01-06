@@ -25,8 +25,8 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="4NJ-W4-ogJ">
                                 <rect key="frame" x="16" y="40" width="343" height="92"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Meal Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PO5-yg-x3P">
-                                        <rect key="frame" x="0.0" y="0.0" width="103.5" height="16"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meal Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PO5-yg-x3P">
+                                        <rect key="frame" x="0.0" y="0.0" width="68" height="16"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -40,6 +40,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lm4-gK-6N2">
                                         <rect key="frame" x="0.0" y="62" width="30" height="30"/>
                                         <state key="normal" title="Add"/>
+                                        <connections>
+                                            <action selector="se:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5v1-4a-tgT"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -55,7 +58,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="add" destination="Lm4-gK-6N2" id="Qfl-wR-E3W"/>
+                        <outlet property="mealNameLabel" destination="PO5-yg-x3P" id="l7B-mr-SAx"/>
+                        <outlet property="mealNameTextField" destination="Pvg-kA-lPY" id="pWE-Vl-DGO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
