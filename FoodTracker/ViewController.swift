@@ -16,6 +16,8 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet var gestureRecognizer: UITapGestureRecognizer!
     
+    @IBOutlet weak var ratingControl: RatingView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         mealNameTextField.delegate = self
@@ -34,24 +36,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
         imagePicker.sourceType = .photoLibrary
         imagePicker.delegate = self
         self.present(imagePicker, animated: true, completion: nil)
-    }
-    
-    @IBAction func setTextViewLabel(_ sender: UIButton) {
-        if let text = mealNameTextField.text
-        {
-        if text.characters.count>0
-            {
-            mealNameLabel.text = mealNameTextField.text
-        }else{
-            let alert = UIAlertController(title: "Alert", message: "Please enter a meal", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "Back", style: UIAlertActionStyle.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-        }
-        }
-        else
-        {
-            NSLog("String is null")
-        }
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
