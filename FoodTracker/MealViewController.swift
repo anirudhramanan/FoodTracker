@@ -8,10 +8,9 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var mealNameTextField: UITextField!
-    @IBOutlet weak var mealNameLabel: UILabel!
 
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet var gestureRecognizer: UITapGestureRecognizer!

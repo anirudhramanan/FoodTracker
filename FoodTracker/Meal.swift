@@ -19,7 +19,7 @@ class Meal {
             return nil
         }
         
-        guard rating > 0 && rating < 5 else {
+        guard rating > 0 && rating <= 5 else {
             return nil
         }
         
