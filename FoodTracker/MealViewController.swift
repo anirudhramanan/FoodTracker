@@ -7,23 +7,30 @@
 //
 
 import UIKit
+import os.log
 
 class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
+    
     @IBOutlet weak var mealNameTextField: UITextField!
-
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet var gestureRecognizer: UITapGestureRecognizer!
-    
     @IBOutlet weak var ratingControl: RatingView!
+    @IBOutlet weak var saveMeal: UIBarButtonItem!
+
+    var meal: Meal?
+    
+    @IBAction func cancelMeal(_ sender: Any) {
+        dismiss(animated: true, completion : nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         mealNameTextField.delegate = self
         
-        // Do any additional setup after loading the view, typically from a nib.
+        // Enable the Save button only if the text field has a valid Meal name.
+        updateSaveButtonState()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -48,5 +55,32 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
         
         photoImageView.image = selectedImage
         dismiss(animated: true, completion: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        guard let button = sender as? UIBarButtonItem, button == saveMeal else{
+            os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
+            return
+        }
+        let name = mealNameTextField.text ?? ""
+        let photo = photoImageView.image
+        let rating = ratingControl.rating
+        meal = Meal(name: name, mealImage: photo, rating: rating)
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        self.saveMeal.isEnabled = false
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        updateSaveButtonState()
+        navigationItem.title = textField.text
+    }
+    
+    private func updateSaveButtonState() {
+        // Disable the Save button if the text field is empty.
+        let text = mealNameTextField.text ?? ""
+        saveMeal.isEnabled = !text.isEmpty
     }
 }

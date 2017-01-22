@@ -73,7 +73,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FyL-jd-swP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="528.79999999999995" y="158.77061469265368"/>
+            <point key="canvasLocation" x="428" y="159"/>
         </scene>
         <!--Add Meal-->
         <scene sceneID="tne-QT-ifu">
@@ -127,24 +127,34 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Add Meal" id="1JN-gu-LOI">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="Kxf-dc-wIT"/>
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="fsA-DT-noD"/>
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="Kxf-dc-wIT">
+                            <connections>
+                                <action selector="cancelMeal:" destination="BYZ-38-t0r" id="RGg-Ge-icf"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="fsA-DT-noD">
+                            <connections>
+                                <segue destination="g8x-Uy-I3e" kind="unwind" unwindAction="unwindToMealListWithSender:" id="k02-R8-jVv"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="gestureRecognizer" destination="z64-Du-bLv" id="Y8z-fj-1qb"/>
                         <outlet property="mealNameTextField" destination="4dR-eH-oj4" id="zTK-Dt-CIi"/>
                         <outlet property="photoImageView" destination="B0W-e6-Er3" id="KOS-dA-d5Y"/>
                         <outlet property="ratingControl" destination="5Bs-Qs-ery" id="PPM-tB-rR3"/>
+                        <outlet property="saveMeal" destination="fsA-DT-noD" id="Ypo-Ke-KOA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <exit id="g8x-Uy-I3e" userLabel="Exit" sceneMemberID="exit"/>
                 <tapGestureRecognizer id="z64-Du-bLv">
                     <connections>
                         <action selector="selectImageFromPhotoLibrary:" destination="BYZ-38-t0r" id="jHB-cX-DvL"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2178.4000000000001" y="158.77061469265368"/>
+            <point key="canvasLocation" x="2047" y="159"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="K0k-1K-xhJ">
