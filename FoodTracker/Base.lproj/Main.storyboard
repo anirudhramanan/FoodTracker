@@ -24,7 +24,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ois-T7-cfS" id="cPY-3X-mnb">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="89"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="89.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="hLx-Vj-3TX">
@@ -55,6 +55,7 @@
                                     <outlet property="mealImage" destination="hLx-Vj-3TX" id="YAy-Rd-4cj"/>
                                     <outlet property="mealName" destination="wia-XS-81j" id="AE0-OB-ZdZ"/>
                                     <outlet property="mealRating" destination="gYo-Ja-OI2" id="H4I-OP-LJw"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="ShowDetail" id="5Mc-Nl-cPW"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -134,7 +135,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Save" id="fsA-DT-noD">
                             <connections>
-                                <segue destination="g8x-Uy-I3e" kind="unwind" unwindAction="unwindToMealListWithSender:" id="k02-R8-jVv"/>
+                                <segue destination="g8x-Uy-I3e" kind="unwind" identifier="unwind" unwindAction="unwindToMealListWithSender:" id="k02-R8-jVv"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -190,10 +191,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RaC-O1-lSx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1239.2" y="158.77061469265368"/>
+            <point key="canvasLocation" x="1206" y="857"/>
         </scene>
     </scenes>
     <resources>
         <image name="Image" width="350" height="350"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="5Mc-Nl-cPW"/>
+    </inferredMetricsTieBreakers>
 </document>

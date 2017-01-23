@@ -16,16 +16,30 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
     @IBOutlet var gestureRecognizer: UITapGestureRecognizer!
     @IBOutlet weak var ratingControl: RatingView!
     @IBOutlet weak var saveMeal: UIBarButtonItem!
-
+    
     var meal: Meal?
     
     @IBAction func cancelMeal(_ sender: Any) {
-        dismiss(animated: true, completion : nil)
+        let isPresentingInAddMode = presentingViewController is UINavigationController
+        if isPresentingInAddMode {
+            dismiss(animated: true, completion : nil)
+        } else if let owningNavigationController = navigationController {
+            owningNavigationController.popViewController(animated: true)
+        } else {
+            fatalError("The MealViewController is not inside a navigation controller.")
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         mealNameTextField.delegate = self
+        
+        if let meal = meal{
+            navigationItem.title = meal.name
+            mealNameTextField.text = meal.name
+            photoImageView.image = meal.mealImage
+            ratingControl.rating = meal.rating
+        }
         
         // Enable the Save button only if the text field has a valid Meal name.
         updateSaveButtonState()
