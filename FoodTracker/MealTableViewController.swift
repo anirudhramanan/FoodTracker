@@ -15,12 +15,10 @@ class MealTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.leftBarButtonItem = editButtonItem
-        loadSampleMeals()
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
         
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        if let savedMeal = loadMeal(){
+            meals += savedMeal
+        }
     }
     
     @IBAction func unwindToMealList(sender: UIStoryboardSegue) {
@@ -36,6 +34,7 @@ class MealTableViewController: UITableViewController {
                 tableView.insertRows(at: [newIndexPath], with: .automatic)
             }
         }
+        saveMeals()
     }
     
     override func didReceiveMemoryWarning() {
@@ -109,6 +108,7 @@ class MealTableViewController: UITableViewController {
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
+        saveMeals()
     }
     
     
@@ -154,4 +154,13 @@ class MealTableViewController: UITableViewController {
             break
         }
     }
+    
+    private func saveMeals() {
+        NSKeyedArchiver.archiveRootObject(meals, toFile: Meal.ArchiveURL.path)
+    }
+    
+    private func loadMeal() -> [Meal]? {
+        return NSKeyedUnarchiver.unarchiveObject(withFile: Meal.ArchiveURL.path) as? [Meal]
+    }
+    
 }
